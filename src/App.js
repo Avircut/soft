@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-
+import './styles/App.css';
+import { useState } from 'react';
+import { AuthContext } from './context';
+import { BrowserRouter } from 'react-router-dom';
+import AppRouter from './components/AppRouter';
+import NavBar from './components/NavBar';
+import Modal from 'react-modal/lib/components/Modal';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+Modal.setAppElement('#root');
 function App() {
+  if(!localStorage.getItem('auth')) // При первом запуске приложения устанавливаем состояние авторизации
+    localStorage.setItem('auth',JSON.stringify({isAuth:false}));
+  const [isAuth,setIsAuth] = useState(JSON.parse(localStorage.getItem('auth')).isAuth);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthContext.Provider value={{
+      isAuth,
+      setIsAuth
+    }}>
+      <ToastContainer/>
+      <BrowserRouter>
+      {isAuth&& 
+      <NavBar/>
+      }
+        <AppRouter/>
+      </BrowserRouter>
+  </AuthContext.Provider>
   );
 }
 

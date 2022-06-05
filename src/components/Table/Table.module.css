@@ -1,0 +1,68 @@
+.tableContainer{
+  @apply flex flex-col mx-auto relative mt-5;
+}
+.table{
+  min-width:500px;
+  box-shadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.15);
+  @apply rounded-t-lg h-full pb-14 overflow-y-auto;
+}
+.tableHead{
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+}
+.tableBody{
+  height:500px;
+  scrollbar-color: #D4AA70 #e4e4e4;
+  scrollbar-gutter: stable;
+  @apply block overflow-y-auto ;
+}
+.tableBody::-webkit-scrollbar {
+  width: 15px;
+}
+
+.tableBody::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+  border-radius: 100px;
+}
+.tableBody::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  border: 2px solid transparent;
+  background-image: linear-gradient(180deg, #79D27B 0%, #9CD39D 99%);
+  background-clip: content-box;
+  box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
+}
+.tableRow{
+  @apply grid grid-cols-4 w-full border-b transition-colors relative overflow-hidden;
+}
+.tableHead .tableRow:first-of-type{
+  @apply pr-4;
+}
+.tableRow:hover{
+  @apply bg-gray-200 cursor-pointer;
+}
+.tableHeading{
+  @apply font-medium px-2 text-lg transition-colors;
+  padding-top:10px;
+  padding-bottom:13px;
+}
+.tableHeading:hover{
+  @apply bg-green-300;
+}
+.tableCell{
+  @apply whitespace-nowrap px-2 text-center py-2 overflow-hidden;
+}
+.tableCell:not(:first-of-type){
+  @apply border-l;
+}
+.buttonGroup{
+  @apply flex justify-between rounded-b-lg bottom-0 left-0 right-0;
+  box-shadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.15), inset 0px 0px 10px 4px rgba(0, 0, 0, 0.15);
+}
+.addBtn{
+  border-radius: 0 0 0 8px;
+}
+.expBtn{
+  border-radius: 0px 0px 8px 0px;
+}
+.total::first-letter{
+  @apply capitalize;
+}
